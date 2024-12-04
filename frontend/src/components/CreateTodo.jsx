@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 
-export function CreateTodo()
+export function CreateTodo({setTodos})
 {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -23,19 +23,23 @@ export function CreateTodo()
         <button style={{
             padding: 10,
             margin: 10
-        }} onClick={()=>{
+        }} onClick={
+            ()=>{
+            const todo = {
+                title: title,
+                description: description
+            }
+
             fetch("http://localhost:3000/todo", {
                 method: "POST",
-                body: JSON.stringify({
-                    title: title,
-                    description: description
-                }),
+                body: JSON.stringify(todo),
                 headers: {
                     "content-type": "application/json"
                 }
             }).then(async function(res) {
                 const json = await res.json();
                 alert('Todo added!');
+                setTodos((prevTodos)=>[...prevTodos, todo]);
             })
         }}>Add a todo</button>
     </div>
