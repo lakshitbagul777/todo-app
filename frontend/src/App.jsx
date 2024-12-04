@@ -1,12 +1,21 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { CreateTodo } from './components/CreateTodo'
+import {Todos} from "./components/Todos"
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [todos, setTodos] = useState([])
+
+  useEffect(async function(){
+    const res = await fetch("http://localhost:3000/todos");
+    const json = await res.json();
+    setTodos(json.todos);
+    
+  }, []);
 
   return (
     <div>
       <CreateTodo/>
+      <Todos todos={todos}></Todos>
     </div>
   )
 }
