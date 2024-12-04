@@ -1,0 +1,16 @@
+{
+  "name": "todo-backend",
+  "version": "1.0.0",
+  "description": "This is a simple todo application backend",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "author": "Lakshit Bagul",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1",
+    "mongoose": "^8.8.3",
+    "zod": "^3.23.8"
+  }
+}
