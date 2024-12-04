@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 
-export function CreateTodo({setTodos})
+export function CreateTodo({ setTodos })
 {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
